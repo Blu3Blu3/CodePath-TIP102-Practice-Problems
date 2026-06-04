@@ -29,7 +29,7 @@ Write a function "greeting()" that accepts a single parameter, a string "name", 
 "Welcome to the Hundred Acre Wood <name>! My name is Christopher Robin."
 
 This is asking for a string to be added in the middle of another to create a greeting.
-To do this, either a formatted string "f-string" or concatenating pieces "Welcome..." + name + "! My name..."will work.
+To do this, either a formatted string "f-string" or concatenating pieces "Welcome..." + name + "! My name..." will work.
 '''
 def greeting(name):
   print(f"Welcome to the Hundred Acre Wood {name}! My name is Christopher Robin.")
@@ -106,8 +106,34 @@ def doubled(hunny_jars):
     ret[h] *= 2
   return ret
 
+'''
+7. Poohsticks
+Pooh and his friends are playing a game called Poohsticks where they drop sticks in a stream and race them.
+They time how long it takes each player's stick to float under Poohsticks Bridge to score each round.
 
+Write a function "count_less_than()" to help Pooh and his friends determine how many players should move on
+to the next round of Poohsticks. It should accept a list of integers "race_times" and an integer "threshold"
+and return the number of race times less than "threshold".
 
+This is asking for the # of times in the list that are less than the threshold. This can be done by iterating
+over the list and checking each element "e", incrementing a counter if e < threshold, or by using Python's
+"filter()" function to find only the "passing" elements, then getting the length of that list. I'll go with
+the former, but leave some code for the latter here in the comments:
+
+filteredList = list(filter(lambda t : t < threshold, race_times))
+
+* "lambda t : t < threshold" is an anonymous function that iterates over the elements in a given list. It
+  returns True if an element "t" is < "threshold", and false otherwise.
+  The "filter()" function uses that function with "race_times", taking them both as parameters for itself
+  and returning a list of only the values that returned True in the anonymous function.
+  Finally, the whole thing is cast as a list with "list()" since it'd be a filter object otherwise.
+'''
+def count_less_than(race_times, threshold):
+  count = 0
+  for t in race_times:
+    if t < threshold:
+      count += 1
+  return count
 
 
 
