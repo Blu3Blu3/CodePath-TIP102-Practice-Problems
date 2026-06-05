@@ -29,6 +29,63 @@ Ex.  ["bat", "man"] & ["b", "at", "m", "an"] both represent "batman".
 This problem is asking to iterate over two arrays independently to piece together a string, so one loop is needed for each
 to create their respective string. Once done, it's just a matter of checking whether or not the created strings are
 equivalent using "==".
+
+Note that both arrays have to be assessed independently because they may have different lengths. Using "range()" in those
+situations would fail due to one of the two going OOB.
 '''
 def are_equivalent(word1, word2):
+  stitch1 = ""
+  stitch2 = ""
+  # Piece together first word
+  for w in word1:
+    stitch1 += w
+  # Piece together second word
+  for w in word2:
+    stitch2 += w
+  return stitch1 == stitch2
+
+'''
+2. Count Even Strings
+Write a function "count_evens()" that returns the number of strings in a list "lst" whose lengths are even.
+
+This is simply asking to iterate through a list and count how many strings have even lengths. This can be done with a
+loop that increments a sum variable every time an "even" string is found.
+
+No real edge cases here aside from empty lists, which would automatically cause a return value of 0.
+'''
+def count_evens(lst):
+  sum = 0
+  for s in lst:
+    if (len(s) % 2) == 0:
+      sum += 1
+  return sum
+
+'''
+3. Secret Identity
+Write a function "remove_name()" that, given a list of names "people" and a string "secret_identity", returns the list
+with any instances of "secret_identity" removed. The list must be modified in place, so no new lists can be created, and
+the relative order of the remaining elements must be maintained.
+
+Since the function must modify the list in place, rather than making a copy and working with that, it'll have to work with
+the list "people" directly. Changes will carry over in this case because in Python, lists are passed by reference rather
+than value. The only data types that don't follow this are ints, strings, and tuples, i.e., the immutable
+data types.
+
+In terms of actual implementation, this calls for using a while loop paired with a tracker "ind" for the current index.
+If people[ind] = secret_identity, the function pops that element without increasing the index, so the next element can be
+checked rather than skipped. Otherwise, the index is incremented. This repeats until the list is exhausted and all instances
+of secret_identity are removed.
+'''
+def remove_name(people, secret_identity):
+  
+
+
+
+
+
+
+
+
+
+
 
