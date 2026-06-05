@@ -5,4 +5,30 @@ Started: 6/5/2026
 Finished: -----
 Validated: -----
 Last updated: 6/5/2026
+
+TODO: Add the second problem set to W1S1 since each session has two problem sets.
+TODO: Sync the first problem set up to #8, since those are already done from the last class.
+
+This problem set is more of the same from the first session, just a little bit tougher. It also focuses
+more on math and string methods than it does with just printing and string access.
 '''
+
+### SET 1 ###
+
+#...is  what I would say, if I had it here >:(
+
+### SET 2 ###
+
+'''
+1. String Array Equivalency
+Given two string arrays "word1" and "word2", write a function "are_equivalent()" that returns True if both arrays represent
+the same string, and False otherwise.
+
+Ex.  ["bat", "man"] & ["b", "at", "m", "an"] both represent "batman".
+
+This problem is asking to iterate over two arrays independently to piece together a string, so one loop is needed for each
+to create their respective string. Once done, it's just a matter of checking whether or not the created strings are
+equivalent using "==".
+'''
+def are_equivalent(word1, word2):
+
