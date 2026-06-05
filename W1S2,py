@@ -77,10 +77,48 @@ checked rather than skipped. Otherwise, the index is incremented. This repeats u
 of secret_identity are removed.
 '''
 def remove_name(people, secret_identity):
-  
+  ind = 0
+  while ind < len(people):
+    if people[ind] == secret_identity:
+      people.pop(ind)
+    else:
+      ind += 1
+  return people
 
+'''
+4. Count Digits
+Given a non-negative integer "n", write a function "count_digits()" that returns the number of digits n has, without
+casting n to a string.
 
+If casting to a string were allowed, this would simply be asking what the length of n is after casting. However, since it's
+disallowed, we'll use floor division to separate the digits, just like we had in that problem about adding up digit values.
+The only difference is that now, we're only keeping count of how many digits there are, i.e., how many floor divisions are
+possible before n hits 0.
 
+Edge cases include 0 itself, which should return 1. This can be addressed by starting the counter for floor divisions at 1,
+or by making a specific case for 0 that just returns 1 without going into the loop. (You can also just change the threshold
+from "> 0" to "> 10", automatically catching every number from 0-9.)
+'''
+def count_digits(n):
+  digits = 1
+  while n > 10:
+    n = n // 10
+    digits += 1
+  return digits
+
+'''
+5. Move Zeroes
+Write a function "move_zeroes()" that accepts an integer array "nums" and returns a new list with all 0's moved to the end.
+The relative order of the list's elements should be maintained.
+
+This problem is asking to "move" the zeroes to the end, which could be done by actually moving them by swapping indices,
+like we would do in Bubble Sort, or by removing the zeroes and appending them to the end. Personally, the latter seems
+easier to implement and understand because we're not messing up the order by using something like "pop()" or "append()".
+
+Anyways, this requires iterating over the list with a while loop and index tracker "ind", and when a 0 is found, it's popped.
+From there, a counter "zeroes" for 0's can be incremented, and once the loop is over, "zeroes" 0's can be added to the end of
+the list with "append()" or "+=". Probably the latter to make things faster.
+'''
 
 
 
