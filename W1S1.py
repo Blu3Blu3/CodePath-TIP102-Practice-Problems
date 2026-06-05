@@ -4,7 +4,8 @@ Week 1, Session 1
 Started: 6/4/2026
 Finished: -----
 Validated: -----
-Last updated: 6/4/2026
+Last updated: 6/5/2026
+  - TODO: Sync this with the copy on the desktop, the rest are solved already.
 
 Hi! These problems are going to be paraphrased from the course and answered in both the comments and code.
 Once all the problems are solved, code to test it will be added at the bottom of this file; from there,
@@ -136,5 +137,7 @@ def count_less_than(race_times, threshold):
   return count
 
 
-
+# Test here
+if __name__ == "__main__":
+  pass
 
