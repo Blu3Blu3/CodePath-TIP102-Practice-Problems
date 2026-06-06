@@ -1,6 +1,7 @@
 '''
 Christian Guiang
 Week 1, Session 1
+Shoutouts to Github :)
 Started: 6/4/2026
 Finished: -----
 Validated: -----
