@@ -1,0 +1,129 @@
+'''
+Christian Guiang
+Week 1, Session 2
+Started: 6/5/2026
+Finished: -----
+Validated: -----
+Last updated: 6/5/2026
+
+TODO: Add the second problem set to W1S1 since each session has two problem sets.
+TODO: Sync the first problem set up to #8, since those are already done from the last class.
+
+This problem set is more of the same from the first session, just a little bit tougher. It also focuses
+more on math and string methods than it does with just printing and string access.
+'''
+
+### SET 1 ###
+
+#...is  what I would say, if I had it here >:(
+
+### SET 2 ###
+
+'''
+1. String Array Equivalency
+Given two string arrays "word1" and "word2", write a function "are_equivalent()" that returns True if both arrays represent
+the same string, and False otherwise.
+
+Ex.  ["bat", "man"] & ["b", "at", "m", "an"] both represent "batman".
+
+This problem is asking to iterate over two arrays independently to piece together a string, so one loop is needed for each
+to create their respective string. Once done, it's just a matter of checking whether or not the created strings are
+equivalent using "==".
+
+Note that both arrays have to be assessed independently because they may have different lengths. Using "range()" in those
+situations would fail due to one of the two going OOB.
+'''
+def are_equivalent(word1, word2):
+  stitch1 = ""
+  stitch2 = ""
+  # Piece together first word
+  for w in word1:
+    stitch1 += w
+  # Piece together second word
+  for w in word2:
+    stitch2 += w
+  return stitch1 == stitch2
+
+'''
+2. Count Even Strings
+Write a function "count_evens()" that returns the number of strings in a list "lst" whose lengths are even.
+
+This is simply asking to iterate through a list and count how many strings have even lengths. This can be done with a
+loop that increments a sum variable every time an "even" string is found.
+
+No real edge cases here aside from empty lists, which would automatically cause a return value of 0.
+'''
+def count_evens(lst):
+  sum = 0
+  for s in lst:
+    if (len(s) % 2) == 0:
+      sum += 1
+  return sum
+
+'''
+3. Secret Identity
+Write a function "remove_name()" that, given a list of names "people" and a string "secret_identity", returns the list
+with any instances of "secret_identity" removed. The list must be modified in place, so no new lists can be created, and
+the relative order of the remaining elements must be maintained.
+
+Since the function must modify the list in place, rather than making a copy and working with that, it'll have to work with
+the list "people" directly. Changes will carry over in this case because in Python, lists are passed by reference rather
+than value. The only data types that don't follow this are ints, strings, and tuples, i.e., the immutable
+data types.
+
+In terms of actual implementation, this calls for using a while loop paired with a tracker "ind" for the current index.
+If people[ind] = secret_identity, the function pops that element without increasing the index, so the next element can be
+checked rather than skipped. Otherwise, the index is incremented. This repeats until the list is exhausted and all instances
+of secret_identity are removed.
+'''
+def remove_name(people, secret_identity):
+  ind = 0
+  while ind < len(people):
+    if people[ind] == secret_identity:
+      people.pop(ind)
+    else:
+      ind += 1
+  return people
+
+'''
+4. Count Digits
+Given a non-negative integer "n", write a function "count_digits()" that returns the number of digits n has, without
+casting n to a string.
+
+If casting to a string were allowed, this would simply be asking what the length of n is after casting. However, since it's
+disallowed, we'll use floor division to separate the digits, just like we had in that problem about adding up digit values.
+The only difference is that now, we're only keeping count of how many digits there are, i.e., how many floor divisions are
+possible before n hits 0.
+
+Edge cases include 0 itself, which should return 1. This can be addressed by starting the counter for floor divisions at 1,
+or by making a specific case for 0 that just returns 1 without going into the loop. (You can also just change the threshold
+from "> 0" to "> 10", automatically catching every number from 0-9.)
+'''
+def count_digits(n):
+  digits = 1
+  while n > 10:
+    n = n // 10
+    digits += 1
+  return digits
+
+'''
+5. Move Zeroes
+Write a function "move_zeroes()" that accepts an integer array "nums" and returns a new list with all 0's moved to the end.
+The relative order of the list's elements should be maintained.
+
+This problem is asking to "move" the zeroes to the end, which could be done by actually moving them by swapping indices,
+like we would do in Bubble Sort, or by removing the zeroes and appending them to the end. Personally, the latter seems
+easier to implement and understand because we're not messing up the order by using something like "pop()" or "append()".
+
+Anyways, this requires iterating over the list with a while loop and index tracker "ind", and when a 0 is found, it's popped.
+From there, a counter "zeroes" for 0's can be incremented, and once the loop is over, "zeroes" 0's can be added to the end of
+the list with "append()" or "+=". Probably the latter to make things faster.
+'''
+
+
+
+
+
+
+
+
