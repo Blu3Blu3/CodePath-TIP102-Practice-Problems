@@ -3,6 +3,11 @@ Christian Guiang
 06 11 2026
 Week 2, Session 2 Practice Problems
 
+Started: 6/11/2026
+Finished: -----
+Validated: -----
+Last updated: 6/13/2026
+
 Some stuff from the cheat sheet:
 
 To make a dictionary with values from a list or other iterable:
@@ -201,24 +206,51 @@ def prioritize_observations(observed_species, prioritized_species):
     left.extend(right)
     return left
 
+
+'''
+5. Calculating Conservation Statistics
+You are given a 0-indexed integer array "species_populations" of even length, where
+each element represents the population of a particular species in a wildlife reserve.
+
+As long as "species_populations" is not empty, you must:
+
+1. Find and remove the species with the minimum population.
+2. Find and remove the species with the maximum population.
+3. Calculate the average population between the two.
+(In the case of ties, remove any species that's tied.)
+
+Write a function "distinct_averages()" that returns all the distinct average values
+derived from this process.
+
+The problem is straightforward in asking to iterate through an array removing the min
+and max elements where population is concerned, then asking to return the number of
+distinct averages derived from those two elements.
+
+Since the iteration must go until the array is empty, it's best to use a while loop
+with "species_populations != None" or an equivalent expression as a condition. Then,
+each iteration of the loop, the min and max can be removed with "pop()", continuing
+until the array is empty. Holding the averages is done using a var "aves", and new
+averages can be added only if they're not in "aves" already.
+
+Edge cases: Empty list "species_populations", but this just returns 0.
+'''
+def distinct_averages(species_populations):
+    aves = []
+    while len(species_populations) != 0:
+        # Long!
+        newAve = (species_populations.pop(species_populations.index(max(species_populations))) +
+                  species_populations.pop(species_populations.index(min(species_populations)))) / 2
+        if newAve not in aves:
+            aves.append(newAve)
+    print(aves)
+    return len(aves)
+
 # Test here
 
 if __name__ == "__main__":
-    '''
-    layout1 = "abcdefghijklmnopqrstuvwxyz"
-    layout2 = "pqrstuvwxyzabcdefghijklmno"
-    obby1 = "cba"
-    obby2 = "wildlife"
+    species_populations1 = [4,1,4,0,3,5]
+    species_populations2 = [1,100]
 
-    print(f"Layout 1 takes {navigate_research_station(layout1, obby1)} steps")
-    print(f"Layout 2 takes {navigate_research_station(layout2, obby2)} steps")
-    '''
-    observed_species1 = ["🐯", "🦁", "🦌", "🦁", "🐯", "🐘", "🐍", "🦑", "🐻", "🐯", "🐼"]
-    priority_species1 = ["🐯", "🦌", "🐘", "🦁"]  
-
-    observed_species2 = ["bluejay", "sparrow", "cardinal", "robin", "crow"]
-    priority_species2 = ["cardinal", "sparrow", "bluejay"]
-
-    print(prioritize_observations(observed_species1, priority_species1))
-    print(prioritize_observations(observed_species2, priority_species2)) 
+    print(distinct_averages(species_populations1))
+    print(distinct_averages(species_populations2)) 
 
