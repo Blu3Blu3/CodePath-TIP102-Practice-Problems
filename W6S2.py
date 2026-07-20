@@ -247,13 +247,21 @@ def partition(suspect_ratings, threshold):
     # Then, create separate linked lists of each bucket's nodes.
     greaterList = stitch_nodes(greater)
     lesserList = stitch_nodes(lesser)
-    # Finally, link the tail of greaterList to the head of lesserList.
+    # Finally, link the tail of greaterList to the head of lesserList, if greaterList exists.
     tail = greaterList
-    while tail.next:
-        tail = tail.next
-    tail.next = lesserList
+    if tail:
+        while tail.next:
+            tail = tail.next
+        tail.next = lesserList
+    else:
+        return lesserList
     return greaterList
 
-suspect_ratings = Node(1, Node(4, Node(3, Node(2, Node(5, Node(2))))))
+# suspect_ratings = Node(1, Node(4, Node(3, Node(2, Node(5, Node(2))))))
 
-print_linked_list(partition(suspect_ratings, 3))
+# print_linked_list(partition(suspect_ratings, 3))
+
+# NOTE: Initializing a var "a" to var "b = Object()" will cause a and b to point to the same Object.
+# NOTE: Use "deepcopy()" from the "copy" module instead to create an independent copy of an object.
+
+# 4. 
