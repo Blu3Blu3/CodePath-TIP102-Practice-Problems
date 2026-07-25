@@ -1,3 +1,8 @@
+### Base classes, just let these be ###
+# Binary Tree node
+class TreeNode:
+    def __init__(self, val = 0, left = None, right = None):
+
 def binary_search_first(nums, target):
     l = 0
     r = len(nums) - 1
@@ -25,12 +30,14 @@ def binary_search_first(nums, target):
         
     return -1
 
-uNums = [1,2,3,4,5,6,7,8,9,10]
-dNums = [1,2,3,3,3,4,5]
-nNums = [0,0,0,0,0]
-target = 1
-print("GO!")
-print(f"First instance of {target} in {uNums} is at index {binary_search_first(uNums, target)}")
-print(f"First instance of {target} in {dNums} is at index {binary_search_first(dNums, target)}")
-print(f"First instance of {target} in {nNums} is at index {binary_search_first(nNums, target)}")
-print("LOVE WINS!")
+if __name__ == "__main__":
+    uNums = [1,2,3,4,5,6,7,8,9,10]
+    dNums = [1,2,3,3,3,4,5]
+    nNums = [0,0,0,0,0]
+    target = 1
+
+    print("GO!")
+    print(f"First instance of {target} in {uNums} is at index {binary_search_first(uNums, target)}")
+    print(f"First instance of {target} in {dNums} is at index {binary_search_first(dNums, target)}")
+    print(f"First instance of {target} in {nNums} is at index {binary_search_first(nNums, target)}")
+    print("LOVE WINS!")
